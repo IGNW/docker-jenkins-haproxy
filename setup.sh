@@ -56,3 +56,9 @@ echo "Done."
 echo
 echo "You can start the application suite using docker-compose up -d"
 echo
+echo
+echo "After you start the containers cat this file to get the initial password"
+echo
+echo "cat /opt/jenkins-haproxy/jenkins/jenkins_home/secrets/initialAdminPassword" 
+echo
+
