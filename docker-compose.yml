@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  haproxy:
+    image: haproxy:1.7
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /opt/jenkins-haproxy/haproxy/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - /opt/jenkins-haproxy/haproxy/haproxy.pem:/haproxy.pem
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports: 
+      - "50000:50000"
+    volumes:
+      - /opt/jenkins-haproxy/jenkins/jenkins_home:/var/jenkins_home 
+    # The jenkins context is being handled in the jenkins/Dockerfile , so no need to duplicate it here.
+    #command: --prefix=/jenkins
